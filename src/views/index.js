@@ -1,11 +1,8 @@
 import StockList from './StockList/index';
-// import StockDetails from './StockDetails/index';
-// import StockNews from './StockNews/index';
-// import StockRecentTrend from './StockRecentTrend/index';
+import StockDetails from './StockDetails/index';
+
 
 export {
   StockList, 
-  // StockDetails, 
-  // StockNews, 
-  // StockRecentTrend,
+  StockDetails, 
 };

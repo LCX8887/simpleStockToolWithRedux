@@ -37,9 +37,10 @@ const initialState = {
                 lastUpdated:action.lastUpdated,
                 selectedFilter:action.selectedFilter,
                 stockListData:action.stockListData,
+                isFetching:false,
             };
         default:
-            return initialState;
+            return state;
      }
  };
 
