@@ -1,21 +1,19 @@
 import React from 'react';
 import StockNewsRow from './StockNewsRow';
 
-const StockNews = ({stockNews,newsClassName,newsRowClasName,handleCompactView,handleShowSummary }) => {
+const StockNews = ({stockNews,newsClassName,newsRowClassName,handleCompactView,handleShowSummary }) => {
     return(
         <div className={newsClassName}>
             <div>
                 <p>News</p>
                 <button onClick={handleCompactView}>compact view</button>
             </div>
-            <div>
             {stockNews.map((newItem,index) => <StockNewsRow 
                                                     newItem={newItem} 
                                                     key={index} 
                                                     index={index} 
-                                                    newsRowClasName={newsClassName} 
+                                                    newsRowClassName={newsRowClassName} 
                                                     handleShowSummary={handleShowSummary} />)}
-            </div>
         </div>
         
     );

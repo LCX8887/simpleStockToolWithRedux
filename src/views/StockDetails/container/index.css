@@ -1,15 +1,29 @@
-.SettingBar {
+.StockQuoteContainer{
+    position: relative;
+}
+.SettingBar, 
+.StockQuotePannel div,
+.StockNews div:first-child,
+.StockTrendHead {
     text-align: left;
     background-color: rgb(247, 163, 130);
     padding: 5px 0;
+    height:25px;
+    margin-top:2px;
 }
-.SettingBar p{
+.SettingBar p,
+.StockQuotePannel div p,
+.StockNews div:first-child p,
+.StockTrendHead p {
     margin:0;
     display: inline-block;
     color: white;
     height: 25px;
 }
-.SettingBar button {
+.SettingBar button,
+.StockQuotePannel div button,
+.StockNews div :first-child button,
+.StockNews div:first-child button {
     float:right;
     background-color: white;
     border: solid #b6b1b1 0.5px;
@@ -17,11 +31,12 @@
 }
 .QuoteHead {
     text-align: left;
+    margin:10px;
 }
-.QuoteHead p {    
-    display:inline-block;
-    margin:2px;
-  }
+.QuoteHead p {
+    display:inline;
+    margin:5px;
+ }
 .QuoteHead p:first-child {
     display:block;
     font-size:15px;
@@ -64,4 +79,84 @@
     .QuoteBody p:nth-child(2) ~ p {
         border-top:none;
     }
+}
+.hidden {
+    display: none;
+}
+.StockQuotePannel {
+    width: 400px;
+    border: 0.5px solid #e2e1e1;
+    position: absolute;
+    background-color: white;
+    top: 35px;
+    left: 25%;
+
+}
+/* .StockQuotePannel div p {
+    display: inline-block;
+    height: 25px;
+    margin:0px;
+} */
+ 
+.StockQuotePannel table {
+    width:40%;
+    display:inline-block;
+    vertical-align: top;
+    border: 0.5px solid #e2e1e1;
+    border-collapse: collapse;
+    margin:10px 0;
+}
+/* .StockQuotePannel table ~ table {
+    border-left:none;
+} */
+.StockQuotePannel table tr {
+    border: 0.5px solid #e2e1e1;
+    width:100%;
+}
+.StockNewsRow {
+    text-align: left;
+    margin: 10px;
+}
+.StockNewsRow p {
+    display: inline-block;
+    margin:0;
+    
+}
+.StockNewsRow #summary,
+.StockNewsRow #source {
+    display: none;
+}
+.StockNewsRow #index {
+    width:5%;    
+    color: rgb(224, 128, 90);
+}
+.StockNewsRow #headline {
+    width:60%;
+    color: rgb(224, 128, 90);
+}
+.StockNewsRow #datetime {
+    width:30%;
+    color: rgb(224, 128, 90);
+}
+.compactView #summary {
+    display:block;
+    font-size: small;
+    color: #716c6c;
+}
+.compactView #headline {
+    display:block;
+    font-size: 16px;
+    color: rgb(224, 128, 90);
+    font-weight: bold;
+}
+.compactView #source,
+.compactView #datetime{
+    display:inline-block;
+    width:auto;
+    margin-right:5px;
+    font-size: small;
+    color: rgb(224, 128, 90);
+}
+.compactView #index {
+    display: none;
 }

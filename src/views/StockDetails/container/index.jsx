@@ -58,15 +58,20 @@ class StockDetails extends React.Component{
                             tempColumnArr:[],
                             pannelHidden:true,
                         });
+        }else{
+            this.setState({pannelHidden:true,});
         }
         
     }
     handleColumnArrSelect = (e) => {
-        this.setState({tempColumnArr:addItem(this.state.tempColumnArr,e.currentTarget.innerText)});
+        if(this.state.tempColumnArr.indexOf(e.currentTarget.innerText) < 0){
+            this.setState({tempColumnArr:addItem(this.state.tempColumnArr,e.currentTarget.innerText)});
+        }        
     }
     handleClosePannel = () => {
         this.setState({
             pannelHidden: !this.state.pannelHidden,
+            tempColumnArr:[],
         });
         
     }
@@ -75,10 +80,11 @@ class StockDetails extends React.Component{
             compactView:!this.state.compactView,
         });
     }
-    handleShowSummary = () => {
+    handleShowSummary = (e) => {
         this.setState({
             showSummary:!this.state.showSummary,
         });
+        
     }
     render(){
         const { selectedItem,stockQuote,stockNews,stockChart } = this.props;
@@ -99,14 +105,16 @@ class StockDetails extends React.Component{
         const handleShowSummary = this.handleShowSummary;
         var newsClassName = classNames({
                                         'StockNews': true,
-                                        'compactView': this.state.compactView,});  
+                                        'compactView': this.state.compactView,
+                                        });  
         var newsRowClassName = classNames({
-                                        'StockNewsRow': true,
-                                        'showSummary': this.state.showSummary,});          
+                                        'StockNewsRow': true,                                 
+                                        });          
 
         
         return(
-            <div>            
+            <div>
+                <div className='StockQuoteContainer'>            
                 <StockQuote 
                     quoteHeadContent={quoteHeadContent}
                     quoteBodyContent={quoteBodyContent}
@@ -120,6 +128,7 @@ class StockDetails extends React.Component{
                     handleClosePannel={handleClosePannel}
                     className={pannelClassName}
                     />
+                </div>
                 <StockNews 
                     stockNews={stockNews} 
                     newsClassName={newsClassName}

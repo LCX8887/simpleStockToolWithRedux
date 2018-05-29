@@ -19,7 +19,8 @@ const StockRecentTrend = ({stockChart}) => {
     };
     return(
         <div className='StockTrend'>
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <div className='StockTrendHead'><p>Stock Recent Trend</p></div>
+            <canvas id="myChart"></canvas>
             <Chart chart={chart}/>
       </div>
     );
