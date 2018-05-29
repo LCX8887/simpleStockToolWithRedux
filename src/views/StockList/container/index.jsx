@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import FilterBar from '../components/FilterBar';
 import StockTable from '../components/StockTable';
 import { selectItem,setVisibleFilter,fetchPost } from '../flow/actions';
+import './index.css';
+
 
 class StockList extends React.Component{
 
@@ -55,7 +57,7 @@ class StockList extends React.Component{
         const stockListDataViaColumn = getStockListData(stockListData,columnArr);
 
         return(
-            <div>
+            <div className='StockList'>
                 <FilterBar 
                     selectedFilter={selectedFilter} 
                     filterOptions={filterOptions}
@@ -81,7 +83,7 @@ const mapStateToProps = (state) => ({
 
 
 StockList.propTypes = {
-    lastUpdated:PropTypes.number,
+    lastUpdated:PropTypes.string,
     selectedFilter:PropTypes.string,
     stockListData:PropTypes.array,
     filterOptions:PropTypes.array,

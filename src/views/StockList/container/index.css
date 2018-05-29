@@ -1,0 +1,24 @@
+.StockList {
+    
+}
+.FilterBar {
+    text-align: right;
+    background-color: rgb(247, 163, 130);
+    padding: 5px 0;
+}
+.FilterBar button {
+    background-color: white;
+    border: solid #b6b1b1 0.5px;
+    height:25px;
+}
+.StockTable {
+    border-collapse: collapse;
+    width:100%;
+}
+.StockTable tr {
+    border: 1px solid #e4e1e1;
+}
+.StockTable tfoot {
+    text-align: right;
+    background-color: rgb(241, 162, 131);
+}

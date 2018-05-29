@@ -2,7 +2,7 @@ import React from 'react';
 
 const FilterBar = ({selectedFilter,filterOptions,onSetVisibleFilter}) => {
     return(
-        <div>
+        <div className='FilterBar'>
             {filterOptions.map(filter => 
                 <button value={filter}
                         key={filter} 

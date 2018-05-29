@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import StockQuote from '../components/StockQuote';
 import StockQuotePannel from '../components/StockQuotePannel';
-// import StockNews from '../components/StockNews';
-// import StockTrend from '../components/StockTrend';
+import StockNews from '../components/StockNews';
+import StockTrend from '../components/StockTrend';
 import { fetchPost } from '../flow/actions';
 import classNames from 'classnames';
+import './index.css';
 
 class StockDetails extends React.Component{
     constructor(props){
@@ -25,11 +26,15 @@ class StockDetails extends React.Component{
             // selectedColumnArr:["LAST","CHANGE","%CHANGE","VOLUME","AVG TOTAL VOLUME","OPEN","HIGH","LOW","CLOSE","DELAYED PRICE",
             // "PREVIOUSE CLOSE","52WKHI","52WKLO","YTDCHANGE","EXCHANGE","SECTOR"]
             selectedColumnArr:[],
-            pannelHidden:true,     
+            pannelHidden:true,
+            compactView:true, 
+            showSummary:false,    
         };
         this.handleColumnArrSetting = this.handleColumnArrSetting.bind(this);
         this.handleColumnArrSelect = this.handleColumnArrSelect.bind(this);
         this.handleClosePannel = this.handleClosePannel.bind(this);
+        this.handleCompactView = this.handleCompactView.bind(this);
+        this.handleShowSummary = this.handleShowSummary.bind(this);
     } 
 
     componentDidMount() {
@@ -65,8 +70,18 @@ class StockDetails extends React.Component{
         });
         
     }
+    handleCompactView = () => {
+        this.setState({
+            compactView:!this.state.compactView,
+        });
+    }
+    handleShowSummary = () => {
+        this.setState({
+            showSummary:!this.state.showSummary,
+        });
+    }
     render(){
-        const { selectedItem,stockQuote} = this.props;
+        const { selectedItem,stockQuote,stockNews,stockChart } = this.props;
         const columnArr = this.state.columnArr;
         const tempColumnArr = this.state.tempColumnArr;
         const selectedColumnArr = this.state.selectedColumnArr;
@@ -80,6 +95,16 @@ class StockDetails extends React.Component{
         var pannelClassName = classNames({
                                         'StockQuotePannel': true,
                                         'hidden': this.state.pannelHidden,});
+        const handleCompactView = this.handleCompactView;
+        const handleShowSummary = this.handleShowSummary;
+        var newsClassName = classNames({
+                                        'StockNews': true,
+                                        'compactView': this.state.compactView,});  
+        var newsRowClassName = classNames({
+                                        'StockNewsRow': true,
+                                        'showSummary': this.state.showSummary,});          
+
+        
         return(
             <div>            
                 <StockQuote 
@@ -95,8 +120,13 @@ class StockDetails extends React.Component{
                     handleClosePannel={handleClosePannel}
                     className={pannelClassName}
                     />
-                {/* <StockNews stockNews={stockNews}/>
-                <StockTrend stockChart={stockChart}/> */}
+                <StockNews 
+                    stockNews={stockNews} 
+                    newsClassName={newsClassName}
+                    newsRowClassName={newsRowClassName} 
+                    handleCompactView={handleCompactView}
+                    handleShowSummary={handleShowSummary} />
+                <StockTrend stockChart={stockChart}/>
             </div>
         );
     };
@@ -113,6 +143,7 @@ function getQuoteHeadContent(headColumnArr,data){
     for(var j=0;j<result.length;j++){
         result[j].columnData = data[result[j].variableName];
     }
+    return result;
 }
 
 function getQuoteBodyContent(selectedColumnArr,columnArr,data){

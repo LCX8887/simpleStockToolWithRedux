@@ -3,7 +3,7 @@ import StockTableRow from './StockTableRow';
 
 const StockTable = ({ tableHead, stockListData, currentTime, onSelectItem }) => {
     return(
-        <table>
+        <table className='StockTable'>
             <thead>            
                 <tr>
                     {tableHead.map(head => <th key={head}>{head}</th>)}
