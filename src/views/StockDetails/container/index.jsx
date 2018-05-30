@@ -28,7 +28,8 @@ class StockDetails extends React.Component{
             selectedColumnArr:[],
             pannelHidden:true,
             compactView:true, 
-            showSummary:false,    
+            showSummary:false,
+            showMask:false,    
         };
         this.handleColumnArrSetting = this.handleColumnArrSetting.bind(this);
         this.handleColumnArrSelect = this.handleColumnArrSelect.bind(this);
@@ -57,9 +58,11 @@ class StockDetails extends React.Component{
             this.setState({selectedColumnArr:deepCopyArr(this.state.tempColumnArr),
                             tempColumnArr:[],
                             pannelHidden:true,
+                            showMask:!this.state.showMask,
                         });
         }else{
-            this.setState({pannelHidden:true,});
+            this.setState({pannelHidden:true,
+                            showMask:!this.state.showMask,});
         }
         
     }
@@ -72,6 +75,7 @@ class StockDetails extends React.Component{
         this.setState({
             pannelHidden: !this.state.pannelHidden,
             tempColumnArr:[],
+            showMask:!this.state.showMask,
         });
         
     }
@@ -81,9 +85,10 @@ class StockDetails extends React.Component{
         });
     }
     handleShowSummary = (e) => {
-        this.setState({
-            showSummary:!this.state.showSummary,
-        });
+        // this.setState({
+        //     showSummary:!this.state.showSummary,
+        // });
+
         
     }
     render(){
@@ -109,11 +114,17 @@ class StockDetails extends React.Component{
                                         });  
         var newsRowClassName = classNames({
                                         'StockNewsRow': true,                                 
-                                        });          
+                                        }); 
+        var maskClassName = classNames({'mask':true,
+                                        'showMask':this.state.showMask,    
+        });         
 
         
         return(
             <div>
+                <div  className={maskClassName}>
+                    <image />
+                </div>
                 <div className='StockQuoteContainer'>            
                 <StockQuote 
                     quoteHeadContent={quoteHeadContent}

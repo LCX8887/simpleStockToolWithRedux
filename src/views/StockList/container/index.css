@@ -2,14 +2,21 @@
     
 }
 .FilterBar {
-    text-align: right;
+    text-align: left;
     background-color: rgb(247, 163, 130);
     padding: 5px 0;
+}
+.FilterBar p {
+    margin:0;
+    display: inline-block;
+    color: white;
+    height: 25px;
 }
 .FilterBar button {
     background-color: white;
     border: solid #b6b1b1 0.5px;
     height:25px;
+    float:right;
 }
 .StockTable {
     border-collapse: collapse;

@@ -2,7 +2,7 @@ import React from 'react';
 import Chart from './Chart';
 
 const StockRecentTrend = ({stockChart}) => {      
-  
+ 
     const dataArray = stockChart.map(item => item.volume);
     const labelsArray = stockChart.map(item => item.date)
     const chart = {

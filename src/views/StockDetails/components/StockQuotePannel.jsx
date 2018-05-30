@@ -8,7 +8,7 @@ const StockQuotePannel = ({ availabelColumnArr,tempColumnArr,handleColumnArrSett
                 <p>Setting</p>
                 <button onClick={handleClosePannel}>Close</button>
             </div>
-            
+            <div>
             <table>
                 <thead>
                 <tr><th>Avalable Items</th></tr>
@@ -25,6 +25,7 @@ const StockQuotePannel = ({ availabelColumnArr,tempColumnArr,handleColumnArrSett
                 {tempColumnArr.map((item,index) => <tr key={index}><td>{item}</td></tr>)}
                 </tbody>
             </table>
+            </div>
             
             <div>
                 <button onClick={handleColumnArrSetting}>Save&Close</button>
